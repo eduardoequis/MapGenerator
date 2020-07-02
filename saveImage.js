@@ -1,12 +1,8 @@
 
 let mapToDownload = document.getElementsByClassName("map")[0]
-
 let downloadButton = document.getElementById("download")
-
 downloadButton.addEventListener("click", downloadimage)
 
-console.log("Esperando")
- 
 //download the node as png. Image (2019-12-01).png
 function downloadimage() {   
     
