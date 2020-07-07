@@ -89,16 +89,17 @@ var openmodal = document.querySelectorAll('.modal-open')
     }
 
     let acceptButtonModal = document.querySelectorAll('.accept-button')[0]
-    acceptButtonModal.addEventListener("click", newMap)
+    acceptButtonModal.addEventListener("click", checkValuesForNewMap)
 
 
     function checkValuesForNewMap () {
 
       let columns = document.getElementById("columns").value
-      if (colums => 21) {
-         alert("No se puede")
+      let rows = document.getElementById("rows").value
+      if (columns > 20 || rows > 20) {
+         alert("Alert: 20 x 20 maps max.")
       } else {
-
+        newMap()
       }
 
     }
