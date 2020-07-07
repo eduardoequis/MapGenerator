@@ -7,35 +7,20 @@ let selected_bg
 let toolSelected = "pencil" // Can be "pencil", "bucket" and "eraser". Pencil is default.
 
 // 12 columnas max
-let columns = 12
-let rows = 9
+let columns = 0
+let rows = 0
 
-// Map generator. 
-
-function gridGenerator (map, number_of_columns, number_of_rows) {
-
-    map.classList.add(`grid-cols-${number_of_columns}`) // Create columns.
-
-    createPixels (number_of_columns, number_of_rows) // Fill with "pixels"
-
-}
-
-function createPixels (number_of_columns, number_of_rows) {
-  
-    let howMany = number_of_columns * number_of_rows 
-
-    for (i= 0; i < howMany; i++) {
-
-        let pixel = `<div class="square w-10 h-10 border-b border-r pixel${i} bg-empty border-black border-opacity-25"></div>`
-        map.insertAdjacentHTML('beforeend', pixel)
-
-    }
-}
+// maps
 
 
 // Event Listeners.
 
-map.addEventListener("click", changePixelBG)
+let mouseDown = false
+map.addEventListener("mousedown", ()=> {mouseDown = true}) 
+map.addEventListener("mouseup", ()=> {mouseDown = false}) 
+map.addEventListener("mousedown", changePixelBG) 
+map.addEventListener("mousemove", changePixelBG) 
+
 
 for (i = 0; i < palletOptions.length; i++) {
     palletOptions[i].addEventListener("click", selectedPallet)
@@ -48,6 +33,8 @@ for (i = 0; i < tools.length; i++) {
 
 
 function changePixelBG (e) {
+
+if(mouseDown){
  
     if(toolSelected === "pencil") {
 
@@ -70,6 +57,7 @@ function changePixelBG (e) {
 
     if(toolSelected === "bucket") {
        
+        if (selected_bg !== undefined) {
         let bgToChange = findBgValue(e.target)
         let allPixelsToChange = map.querySelectorAll(`.${bgToChange}`) 
 
@@ -77,23 +65,22 @@ function changePixelBG (e) {
             allPixelsToChange[i].classList.toggle(bgToChange)
             allPixelsToChange[i].classList.toggle(selected_bg)
         }
-       
+        }
     }
+}
 
 }
 
 function selectedPallet (e) {  
     cleanAllPalletsSelected()  
     e.target.classList.remove("border")
-    e.target.classList.add("border-4")
-    e.target.classList.add("border-yellow-500")
+    e.target.classList.add("selectedPallet")
     selected_bg = findBgValue(e.target)    
 }
 
 function cleanAllPalletsSelected () {
     for (i = 0; i < palletOptions.length; i++) {
-        palletOptions[i].classList.remove("border-4")
-        palletOptions[i].classList.remove("border-yellow-500")
+        palletOptions[i].classList.remove("selectedPallet")
         palletOptions[i].classList.add("border")
     }
 }
@@ -107,20 +94,16 @@ function selectTool (e) {
 
     cleanAllToolsSelected()
     // ON
-    e.currentTarget.classList.remove("text-white")
-    e.currentTarget.classList.add("text-black")
-    e.currentTarget.classList.add("bg-white") 
-    e.currentTarget.classList.remove("border")
+    e.currentTarget.classList.remove("inactive")
+    e.currentTarget.classList.add("active")
     toolSelected = e.currentTarget.id 
 
 }
 
 function cleanAllToolsSelected () {
     for (i = 0; i < tools.length; i++) {    
-        tools[i].classList.remove("text-black")
-        tools[i].classList.add("text-white")
-        tools[i].classList.remove("bg-white") 
-        tools[i].classList.add("border")
+        tools[i].classList.add("inactive")
+        tools[i].classList.remove("active")
     }
 }
 
@@ -185,6 +168,4 @@ function checkTildes (div) {
 // arriba -columnas
 
 */
-
-gridGenerator (map, columns, rows)
 

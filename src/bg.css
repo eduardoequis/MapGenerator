@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.option {
+    background-size: contain;
+    @apply w-12 h-12 m-1 border;
+}
+
+.active {
+    @apply text-black bg-white;
+}
+
+.inactive {
+    @apply text-white bg-transparent border border-white;
+}
+
+.selectedPallet {
+    @apply border-4 border-yellow-500
+}
+
+.square {
+    background-size: contain;
+}
+
+.bg-cave {
+    background-image: url(".././img/cave.png");
+}
+
+.bg-cavewater {
+    background-image: url(".././img/cavewater.png");
+}
+
+.bg-cavedark {
+    background-image: url(".././img/cavedark.png");
+}
+
+.bg-rock {
+    background-image: url(".././img/rock.png");
+}
+
+
+.bg-boxes {
+    background-image: url(".././img/boxes.png");
+}
+
+.bg-cavemis {
+    background-image: url(".././img/cavemis.png");
+}
+
+.bg-cavestairs {
+    background-image: url(".././img/cavestairs.png");
+}
+
+.bg-chest {
+    background-image: url(".././img/chest.png");
+}
+
+
+.bg-sand-forest {
+    background-image: url(".././img/sand_forest.png");
+}
+
+.bg-wrock {
+    background-image: url(".././img/wrock.png");
+}
+
+
+.bg-pencil {
+    background-image: url(".././img/pencil.png");
+}
+
+.bg-bucket {
+    background-image: url(".././img/bucket.png");
+}
+
+.off {
+    opacity: 0.2
+}
+
+
+.modal {
+    transition: opacity 0.25s ease;
+  }
+
+body.modal-active {
+    overflow-x: hidden;
+    overflow-y: visible !important;
+  }
+

@@ -4,11 +4,13 @@
   "description": "Create Simple D&D Maps online",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwind build src/bg.css -o dist/compiled.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "tailwindcss": "^1.4.6"
   }
 }

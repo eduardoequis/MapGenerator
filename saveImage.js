@@ -10,8 +10,8 @@ function downloadimage() {
 
     domtoimage.toJpeg(mapToDownload, 
           { quality: 1.0, 
-            height: mapToDownload.clientWidth*scale, 
-            width: mapToDownload.clientHeight*scale,
+            width: mapToDownload.clientWidth*scale, 
+            height: mapToDownload.clientHeight*scale,
             style: {'transform': 'scale('+scale+')',
                     'transform-origin': 'top left'} })
     .then(function (dataUrl) {
